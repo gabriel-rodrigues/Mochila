@@ -1,14 +1,38 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      MOCHILA
     </ion-title>
+    <ion-buttons end padding>
+      <button  ion-button icon-only (click)="addContent()">
+        <ion-icon ios="ios-add" md="md-add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <ion-item *ngFor="let content of contents | async" (click)="seleciona(content)">
+    <ion-card >
+      <ion-item>
+        <ion-avatar item-start>
+        <img src="">
+        </ion-avatar>
+        <h2>Nome</h2>
+        <p>Facebook.com/nome</p>
+      </ion-item>
+
+
+      <ion-card-header>
+        {{ content.title }}
+      </ion-card-header>
+      <ion-card-content text-wrap>
+      {{content.comment}}
+    </ion-card-content>
+
+    </ion-card>
+
+  </ion-item>
+
 </ion-content>

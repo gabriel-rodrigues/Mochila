@@ -1,0 +1,35 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalhes</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+      <ion-card>
+          <ion-card-content>
+            <ion-item-group>
+              <ion-item-divider color="light">{{ content.title }}</ion-item-divider>
+                <ion-item text-wrap><p>{{content.comment}}</p></ion-item>
+          </ion-item-group>
+
+          <ion-buttons end padding>
+            <button  ion-button icon-only (click)="addDetail()">
+              <ion-icon ios="ios-add" md="md-add"></ion-icon>
+            </button>
+          </ion-buttons>
+
+
+          <ion-item-group>
+            <ion-item-divider color="light">Comentarios</ion-item-divider>
+            <ion-item text-wrap *ngFor="let detail of details | async"> {{content.detail}} </ion-item>
+          </ion-item-group>
+
+
+        </ion-card-content>
+    </ion-card>
+</ion-content>
