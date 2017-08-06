@@ -12,24 +12,35 @@
 
       <ion-card>
           <ion-card-content>
-            <ion-item-group>
-              <ion-item-divider color="light">{{contentSelecionado.title }}</ion-item-divider>
-                <ion-item text-wrap><p>{{contentSelecionado.comment}}</p></ion-item>
-          </ion-item-group>
+              <ion-item-group>
+                <ion-item-divider color="light">{{contentSelecionado.title }}</ion-item-divider>
+                  <ion-item text-wrap><p>{{contentSelecionado.comment}}</p></ion-item>
+            </ion-item-group>
+          </ion-card-content>
+      </ion-card>
 
-          <ion-buttons end padding>
-            <button  ion-button icon-only (click)="addDetail()">
-              <ion-icon ios="ios-add" md="md-add"></ion-icon>
-            </button>
-          </ion-buttons>
+      <ion-buttons>
+      <button ion-button block  (click)="addDetail()">
+      Add Comentario
+      </button>
+    </ion-buttons>
 
+    <ion-card>
+    <ion-item text-wrap *ngFor="let detail of this.details | async">
 
-          <ion-item-group>
-            <ion-item-divider color="light">Comentarios</ion-item-divider>
-            <ion-item text-wrap *ngFor="let detail of this.details | async"> {{detail.detailcomment}} </ion-item>
-          </ion-item-group>
+        <ion-card>
+          <ion-item>
+            <ion-avatar item-start>
+            <img src="">
+            </ion-avatar>
+            <h2>Nome</h2>
+          </ion-item>
+          <ion-item>
+             <p>{{detail.detailcomment}}</p>
+          </ion-item>
+        </ion-card>
 
+        </ion-item>
+      </ion-card>
 
-        </ion-card-content>
-    </ion-card>
 </ion-content>
