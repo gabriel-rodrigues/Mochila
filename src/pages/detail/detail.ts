@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 
-import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import {AngularFireDatabase, FirebaseListObservable,} from 'angularfire2/database';
 
 
 
@@ -12,17 +12,17 @@ import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database
 })
 export class DetailPage {
 
-  public content;
+  public contentSelecionado;
 
   details: FirebaseListObservable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, angularFire: AngularFireDatabase) {
 
-    this.details = angularFire.list('/Detail');
+    this.contentSelecionado = this.navParams.get('contentSelecionado');
+    this.details = angularFire.list('/Content/'+this.contentSelecionado.$key+'/commentItems');
+    //this.details = this.navParams.get('detailcomment')
 
-    this.content = this.navParams.get('contentSelecionado');
 
-    console.log(this.content);
   }
 
   addDetail():void{
@@ -41,7 +41,7 @@ export class DetailPage {
             handler: data =>{
               this.details.push({
                 detailcomment:data.detailcomment
-              })
+              });
             }
         }
       ]
@@ -51,11 +51,5 @@ export class DetailPage {
     prompt.present();
   }
 
-
-
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailPage');
-  }
 
 }

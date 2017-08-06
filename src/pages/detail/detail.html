@@ -13,8 +13,8 @@
       <ion-card>
           <ion-card-content>
             <ion-item-group>
-              <ion-item-divider color="light">{{ content.title }}</ion-item-divider>
-                <ion-item text-wrap><p>{{content.comment}}</p></ion-item>
+              <ion-item-divider color="light">{{contentSelecionado.title }}</ion-item-divider>
+                <ion-item text-wrap><p>{{contentSelecionado.comment}}</p></ion-item>
           </ion-item-group>
 
           <ion-buttons end padding>
@@ -26,7 +26,7 @@
 
           <ion-item-group>
             <ion-item-divider color="light">Comentarios</ion-item-divider>
-            <ion-item text-wrap *ngFor="let detail of details | async"> {{detail.detailcomment}} </ion-item>
+            <ion-item text-wrap *ngFor="let detail of this.details | async"> {{detail.detailcomment}} </ion-item>
           </ion-item-group>
 
 

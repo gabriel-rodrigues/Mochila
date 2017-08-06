@@ -17,6 +17,7 @@ export class HomePage {
 
   contents: FirebaseListObservable<any[]>;
 
+
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, angularFire: AngularFireDatabase) {
 
     this.contents = angularFire.list('/Content');
@@ -55,6 +56,8 @@ export class HomePage {
   }
 
   seleciona(content){
+
+    console.log(content.$key);
 
     this.navCtrl.push(DetailPage, { contentSelecionado: content});
 
